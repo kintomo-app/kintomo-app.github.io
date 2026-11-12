@@ -4,11 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>きんトモ｜すきま時間の おうち筋トレ</title>
-  <meta name="theme-color" content="#1C3530">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E1211">
+  <script>
+    /* 最初の描画から、選んだ画面の色にする（白く光ってから暗くなるのを防ぐ）。くわしくは src/ui/theme.js。
+       関数で 包むのは、theme・color の 名前を ページ全体に 残さないため。
+       色は src/ui/theme.js の THEME_COLORS と 同じ（tests/ui/contrast.test.js で 確かめる） */
+    (function () {
+      try {
+        var theme = localStorage.getItem('kintomo-theme');
+        if (theme === 'light' || theme === 'dark') {
+          document.documentElement.setAttribute('data-theme', theme);
+          var color = theme === 'dark' ? '#0E1211' : '#FFFFFF';
+          document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) { meta.setAttribute('content', color); });
+        }
+      } catch (e) { /* 読めないときは スマホに 合わせる */ }
+    })();
+  </script>
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-  <script type="module" crossorigin src="./assets/index-LC2dzLSg.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-B60HzHtq.css">
+  <script type="module" crossorigin src="./assets/index-DgnmbeGb.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-B59wDM7M.css">
 </head>
 <body>
   <main id="app"></main>
