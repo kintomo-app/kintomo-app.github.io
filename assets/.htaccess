@@ -1,0 +1,4 @@
+# assets/ の中身はファイル名に目印（ハッシュ）が付くので、1年おぼえさせてよい
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</IfModule>
